@@ -76,6 +76,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tr>
     <td align="center"><a href="https://anandchowdhary.com/?utm_source=github&utm_medium=about&utm_campaign=about-link"><img src="https://avatars3.githubusercontent.com/u/2841780?v=4" width="100px;" alt=""/><br /><sub><b>Anand Chowdhary</b></sub></a><br /><a href="#ideas-AnandChowdhary" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://github.com/AnandChowdhary/puppet/commits?author=AnandChowdhary" title="Code">💻</a> <a href="https://github.com/AnandChowdhary/puppet/commits?author=AnandChowdhary" title="Tests">⚠️</a> <a href="https://github.com/AnandChowdhary/puppet/commits?author=AnandChowdhary" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://gitspo.com"><img src="https://avatars2.githubusercontent.com/u/973543?v=4" width="100px;" alt=""/><br /><sub><b>Gajus Kuizinas</b></sub></a><br /><a href="#infra-gajus" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a></td>
   </tr>
 </table>
 
