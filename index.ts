@@ -4,6 +4,7 @@ import got from "got";
 import { readFile } from "fs-extra";
 import { join } from "path";
 import ms from "ms";
+import finder from "@medv/finder";
 
 /**
  *
@@ -49,14 +50,42 @@ const _puppet = async (commands: string[]) => {
 _puppet(["open example.com"]).then((r) => console.log(r));
 
 const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+const lastWord = (text: string) => text.split(" ")[text.split(" ").length - 1];
 
 const _command = async (command: string, page: Page) => {
-  if (command.startsWith("wait"))
+  if (command === "wait for navigation") await page.waitForNavigation();
+  else if (command.startsWith("wait"))
     await wait(ms(command.replace(/wait|for/gi, "").trim()));
   if (command.startsWith("navigate") || command.startsWith("go")) {
     const query = command.replace(/navigate|go|to|page|url/gi, "").trim();
     const url = query.startsWith("http") ? query : `http://${query}`;
     await page.goto(url);
+  }
+  if (command.startsWith("click")) {
+    const query = command.replace(/click|on/gi, "").trim();
+    let selector = "*";
+    const type = lastWord(query);
+    if (type === "link") selector = "a";
+    if (type === "button") selector = "button";
+    if (type === "input") selector = "input";
+    if (type === "area") selector = "area";
+    if (type === "label") selector = "label";
+    if (type === "textarea") selector = "textarea";
+    if (type === "image") selector = "img";
+    const text = query
+      .replace(/link|button|input|area|label|textarea|image/gi, "")
+      .trim();
+    page.$$eval(selector, (elements) => {
+      let elementToClick: HTMLElement | undefined = undefined;
+      elements.forEach((element) => {
+        if (element.innerHTML.toLocaleLowerCase().includes(text))
+          elementToClick = element as HTMLElement;
+      });
+      if (elementToClick) {
+        (elementToClick as HTMLElement).click();
+        // success("Clicked on ", (elementToClick as HTMLElement).pat());
+      }
+    });
   }
   return page;
 };
