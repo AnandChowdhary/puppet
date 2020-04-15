@@ -1,5 +1,5 @@
 import { launch, Page } from "puppeteer";
-import { log } from "signale";
+import { start, success } from "signale";
 import got from "got";
 import { readFile } from "fs-extra";
 import { join } from "path";
@@ -35,7 +35,7 @@ export const puppet = async (commandsOrFile: string[] | string) => {
  */
 const _puppet = async (commands: string[]) => {
   commands = commands.map((i) => i.toLocaleLowerCase().trim()).filter((i) => i);
-  log("Starting Puppet");
+  start("Starting Puppet");
   const browser = await launch();
   const page = await browser.newPage();
   for await (const command of commands) {
@@ -43,6 +43,7 @@ const _puppet = async (commands: string[]) => {
   }
   const result = { commands, url: page.url() };
   await browser.close();
+  success("Completed Puppet commands");
   return result;
 };
 _puppet(["open example.com"]).then((r) => console.log(r));
@@ -52,5 +53,10 @@ const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 const _command = async (command: string, page: Page) => {
   if (command.startsWith("wait"))
     await wait(ms(command.replace(/wait|for/gi, "").trim()));
+  if (command.startsWith("navigate") || command.startsWith("go")) {
+    const query = command.replace(/navigate|go|to|page|url/gi, "").trim();
+    const url = query.startsWith("http") ? query : `http://${query}`;
+    await page.goto(url);
+  }
   return page;
 };

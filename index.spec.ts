@@ -48,4 +48,12 @@ describe("puppet commands", () => {
     await puppet(["wait for 1 second"]);
     expect(new Date().getTime() - time).toBeGreaterThan(1000);
   });
+  it("go to a URL", async () => {
+    const result = await puppet(["go to example.com"]);
+    expect(result.url).toBe("http://example.com/");
+  });
+  it("go to a full URL", async () => {
+    const result = await puppet(["go to https://example.com"]);
+    expect(result.url).toBe("https://example.com/");
+  });
 });
