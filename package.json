@@ -1,6 +1,6 @@
 {
   "name": "puppet",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Natural-language web automation using Puppeteer",
   "main": "dist/index.js",
   "bin": "dist/index.js",
