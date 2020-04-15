@@ -1,6 +1,6 @@
 import { nodeTs } from "./index";
 
-describe("node.ts", () => {
+describe("puppet", () => {
   it("works", () => {
     expect(nodeTs()).toBeTruthy();
   });
