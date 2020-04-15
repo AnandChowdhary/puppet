@@ -17,6 +17,10 @@ Natural-language web automation using [Puppeteer](https://github.com/puppeteer/p
 
 [![npm](https://nodei.co/npm/puppet.png)](https://www.npmjs.com/package/puppet)
 
+## ⭐️ How it works
+
+Write in natural language (following the [Commands](#-commands))
+
 ## 💡 Usage
 
 Install the package from [npm](https://www.npmjs.com/package/puppet):
@@ -25,13 +29,28 @@ Install the package from [npm](https://www.npmjs.com/package/puppet):
 npm install puppet
 ```
 
-Import and use;
+Install and use the CLI:
+
+```bash
+npm install --save-global puppet
+puppet "path/to/commands.puppet"
+```
+
+Import and use the API:
 
 ```ts
-import { nodeTs } from "@anandchowdhary/node-ts";
+const { puppet } = require("puppet"); // Node.js
+import { puppet } from "puppet"; // TypeScript/ES6
 
-nodeTs();
+const { url } = await puppet("path/to/commands.puppet");
 ```
+
+## 🔫 Commands
+
+| Command example      | Description              |
+| -------------------- | ------------------------ |
+| `Go to example.com`  | Navigate to a URL        |
+| `Wait for 5 seconds` | Wait for a specific time |
 
 ## 👩‍💻 Development
 
