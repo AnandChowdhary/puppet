@@ -1,6 +1,7 @@
 import { launch, Page } from "puppeteer";
 import { log } from "signale";
 import got from "got";
+import {} from "fs-extra";
 
 /**
  *
@@ -20,7 +21,8 @@ export const puppet = async (commandsOrFile: string[] | string) => {
 
 const puppetFile = async (file: string) => {
   if (file.startsWith("https://") || file.startsWith("http://")) {
-    //
+    const commands = await got.get(file);
+    return _puppet(commands.body.split("\n"));
   }
   console.log("Starting Puppet");
 };
