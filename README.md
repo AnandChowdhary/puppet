@@ -1,4 +1,7 @@
 # 🎭 Puppet
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 Natural-language web automation using [Puppeteer](https://github.com/puppeteer/puppeteer).
 
@@ -69,3 +72,22 @@ npm run test-without-reporting
 ## 📄 License
 
 [MIT](./LICENSE) © [Anand Chowdhary](https://anandchowdhary.com)
+
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://anandchowdhary.com/?utm_source=github&utm_medium=about&utm_campaign=about-link"><img src="https://avatars3.githubusercontent.com/u/2841780?v=4" width="100px;" alt=""/><br /><sub><b>Anand Chowdhary</b></sub></a><br /><a href="#ideas-AnandChowdhary" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://github.com/AnandChowdhary/puppet/commits?author=AnandChowdhary" title="Code">💻</a> <a href="https://github.com/AnandChowdhary/puppet/commits?author=AnandChowdhary" title="Tests">⚠️</a> <a href="https://github.com/AnandChowdhary/puppet/commits?author=AnandChowdhary" title="Documentation">📖</a></td>
+  </tr>
+</table>
+
+<!-- markdownlint-enable -->
+<!-- prettier-ignore-end -->
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
