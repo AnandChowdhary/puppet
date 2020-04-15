@@ -1,6 +1,6 @@
 # 🎭 Puppet
 
-Opinionated starter for server-side Node.js libraries, with [TypeScript](https://github.com/microsoft/TypeScript), tests with [Jest](https://github.com/facebook/jest), automated releases with [GitHub Actions](https://github.com/features/actions) and [Semantic Release](https://github.com/semantic-release/semantic-release), and coverage reporting from [Travis CI](https://travis-ci.org) to [Coveralls](https://coveralls.io).
+Natural-language web automation using [Puppeteer](https://github.com/puppeteer/puppeteer).
 
 [![Node CI](https://img.shields.io/github/workflow/status/AnandChowdhary/puppet/Node%20CI?label=GitHub%20CI&logo=github)](https://github.com/AnandChowdhary/puppet/actions)
 [![Travis CI](https://img.shields.io/travis/AnandChowdhary/puppet?label=Travis%20CI&logo=travis%20ci&logoColor=%23fff)](https://travis-ci.org/AnandChowdhary/puppet)
