@@ -66,12 +66,12 @@ describe("puppet commands", () => {
     const result = await puppet(["go to example.com", "wait for navigation"]);
     expect(result.url).toBe("http://example.com/");
   });
-  // it("wait for navigation", async () => {
-  //   const result = await puppet([
-  //     "go to https://example.com",
-  //     "click on more information link",
-  //     "wait for navigation",
-  //   ]);
-  //   expect(result.url).toBe("https://www.iana.org/domains/reserved");
-  // });
+  it("wait for navigation", async () => {
+    const result = await puppet([
+      "go to https://example.com",
+      "click on more information link",
+      "wait for navigation",
+    ]);
+    expect(result.url).toBe("https://www.iana.org/domains/reserved");
+  });
 });

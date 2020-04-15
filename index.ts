@@ -72,7 +72,7 @@ const waitForNavigationOrTimeout = (
 const _command = async (command: string, page: Page): Promise<any> => {
   pending("Running command", command);
   if (command === "wait for navigation")
-    return waitForNavigationOrTimeout(page, 10000);
+    return waitForNavigationOrTimeout(page, 7500);
   if (command.startsWith("wait"))
     return wait(ms(removeWords(command, "wait", "for")));
   if (
@@ -96,37 +96,53 @@ const _command = async (command: string, page: Page): Promise<any> => {
   if (command.includes("save")) return;
   for await (const event of ["click"]) {
     if (command.startsWith(event)) {
-      //     const query = command.replace(/click| on /gi, "").trim();
-      //     let selector = "*";
-      //     const type = lastWord(query);
-      //     if (type === "link") selector = "a";
-      //     if (type === "button") selector = "button";
-      //     if (type === "input") selector = "input";
-      //     if (type === "area") selector = "area";
-      //     if (type === "label") selector = "label";
-      //     if (type === "textarea") selector = "textarea";
-      //     if (type === "image") selector = "img";
-      //     const text = query
-      //       .replace(/link|button|input|area|label|textarea|image/gi, "")
-      //       .trim();
-      //     console.log("GOT ELEMENT 1", text);
-      //     let elementToClick: HTMLElement | undefined = undefined;
-      // await page.$$eval(selector, (elements) => {
-      //   elements.forEach((element) => {
-      //     if (
-      //       (element as HTMLElement).innerText
-      //         .toLocaleLowerCase()
-      //         .includes(text)
-      //     )
-      //       elementToClick = element as HTMLElement;
-      //   });
-      // });
+      const query = removeWords(command, "click");
+      let selector = "*";
+      const type = lastWord(query);
+      if (type === "link") selector = "a";
+      if (type === "button") selector = "button";
+      if (type === "input") selector = "input";
+      if (type === "area") selector = "area";
+      if (type === "label") selector = "label";
+      if (type === "textarea") selector = "textarea";
+      if (type === "image") selector = "img";
+      let elementToClick: HTMLElement | undefined = undefined;
+      await page.$$eval(selector, (elements) => {
+        const text = removeWords(
+          query,
+          "link",
+          "button",
+          "input",
+          "area",
+          "label",
+          "textarea",
+          "image"
+        );
+        elements.forEach((element) => {
+          if (
+            (element as HTMLElement).innerText
+              .toLocaleLowerCase()
+              .includes(text)
+          )
+            elementToClick = element as HTMLElement;
+        });
+      });
+      console.log("FOUND element", elementToClick);
       // if (elementToClick) {
       // console.log("GOT ELEMENT", elementToClick);
       // (elementToClick as HTMLElement).click();
       // }
-      // return;
+      return;
+    } else {
+      // console.log("DOES NOT START WITH", command, event);
     }
+    // throw new Error(`Element not found: ${text}`);
   }
   throw new Error(`Command not understood: ${command}`);
 };
+
+puppet([
+  "go to https://example.com",
+  "click on more information link",
+  "wait for navigation",
+]);
