@@ -11,8 +11,8 @@
   "scripts": {
     "build": "tsc",
     "test": "jest --runInBand",
-    "test-report": "jest --runInBand --coverage --coverageReporters=text-lcov | coveralls",
-    "test-without-reporting": "jest --runInBand --coverage",
+    "test-report": "jest --forceExit --runInBand --coverage --coverageReporters=text-lcov | coveralls",
+    "test-without-reporting": "jest --forceExit --runInBand --coverage",
     "semantic-release": "semantic-release"
   },
   "repository": {

@@ -47,7 +47,6 @@ const _puppet = async (commands: string[]) => {
   success("Completed Puppet commands");
   return result;
 };
-_puppet(["open example.com"]).then((r) => console.log(r));
 
 const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 const lastWord = (text: string) => text.split(" ")[text.split(" ").length - 1];
