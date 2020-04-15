@@ -38,13 +38,15 @@
   },
   "homepage": "https://anandchowdhary.github.io/puppet/",
   "dependencies": {
-    "puppeteer": "^2.1.1"
+    "puppeteer": "^2.1.1",
+    "signale": "^1.4.0"
   },
   "devDependencies": {
     "@semantic-release/git": "^9.0.0",
     "@types/jest": "^25.2.1",
     "@types/node": "^13.11.1",
     "@types/puppeteer": "^2.0.1",
+    "@types/signale": "^1.4.1",
     "coveralls": "^3.0.11",
     "jest": "^25.3.0",
     "semantic-release": "^17.0.4",
