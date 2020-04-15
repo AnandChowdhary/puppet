@@ -1,1 +1,3 @@
-export const nodeTs = () => true;
+import puppeteer from "puppeteer";
+
+export const puppet = () => {};
