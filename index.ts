@@ -4,7 +4,7 @@ import got from "got";
 import { readFile } from "fs-extra";
 import { join } from "path";
 import ms from "ms";
-import finder from "@medv/finder";
+// import finder from "@medv/finder";
 
 /**
  *
@@ -75,17 +75,19 @@ const _command = async (command: string, page: Page) => {
     const text = query
       .replace(/link|button|input|area|label|textarea|image/gi, "")
       .trim();
-    page.$$eval(selector, (elements) => {
-      let elementToClick: HTMLElement | undefined = undefined;
+    let elementToClick: HTMLElement | undefined = undefined;
+    await page.$$eval(selector, (elements) => {
       elements.forEach((element) => {
-        if (element.innerHTML.toLocaleLowerCase().includes(text))
+        if (
+          (element as HTMLElement).innerText.toLocaleLowerCase().includes(text)
+        )
           elementToClick = element as HTMLElement;
       });
-      if (elementToClick) {
-        (elementToClick as HTMLElement).click();
-        // success("Clicked on ", (elementToClick as HTMLElement).pat());
-      }
     });
+    if (elementToClick) {
+      // (elementToClick as HTMLElement).click();
+      success("Clicked on ", (elementToClick as HTMLElement).innerText);
+    }
   }
   return page;
 };
