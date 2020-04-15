@@ -1,7 +1,4 @@
 # 🎭 Puppet
-<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
-<!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 Natural-language web automation using [Puppeteer](https://github.com/puppeteer/puppeteer).
 
@@ -69,11 +66,7 @@ Run unit tests and view coverage:
 npm run test-without-reporting
 ```
 
-## 📄 License
-
-[MIT](./LICENSE) © [Anand Chowdhary](https://anandchowdhary.com)
-
-## Contributors ✨
+## ✨ Contributors
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
@@ -91,3 +84,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
+
+## 📄 License
+
+[MIT](./LICENSE) © [Anand Chowdhary](https://anandchowdhary.com)
