@@ -52,14 +52,14 @@ _puppet(["open example.com"]).then((r) => console.log(r));
 const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 const lastWord = (text: string) => text.split(" ")[text.split(" ").length - 1];
 
-const _command = async (command: string, page: Page) => {
-  if (command === "wait for navigation") await page.waitForNavigation();
-  else if (command.startsWith("wait"))
-    await wait(ms(command.replace(/wait|for/gi, "").trim()));
+const _command = async (command: string, page: Page): Promise<any> => {
+  if (command === "wait for navigation") return await page.waitForNavigation();
+  if (command.startsWith("wait"))
+    return await wait(ms(command.replace(/wait|for/gi, "").trim()));
   if (command.startsWith("navigate") || command.startsWith("go")) {
     const query = command.replace(/navigate|go|to|page|url/gi, "").trim();
     const url = query.startsWith("http") ? query : `http://${query}`;
-    await page.goto(url);
+    return await page.goto(url);
   }
   if (command.startsWith("click")) {
     const query = command.replace(/click|on/gi, "").trim();
@@ -88,6 +88,7 @@ const _command = async (command: string, page: Page) => {
       // (elementToClick as HTMLElement).click();
       success("Clicked on ", (elementToClick as HTMLElement).innerText);
     }
+    return;
   }
-  return page;
+  throw new Error(`Command not understood: ${command}`);
 };
