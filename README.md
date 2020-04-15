@@ -19,7 +19,26 @@ Natural-language web automation using [Puppeteer](https://github.com/puppeteer/p
 
 ## ⭐️ How it works
 
-Write in natural language (following the [Commands](#-commands))
+Write in natural language (following the [Commands](#-commands) section). For example, you can create a file with the following set of commands:
+
+**`path/to/download.puppet`**:
+
+```txt
+Go to typeform.com
+Click on the login link
+Type username user@example.com
+Type password 3rjiw9qie2308
+Click on login button
+Take a screenshot
+Download https://admin.typeform.com/export
+Save to to report.csv
+```
+
+Then, run the command:
+
+```bash
+puppet "path/to/download.puppet"
+```
 
 ## 💡 Usage
 
@@ -47,10 +66,12 @@ const { url } = await puppet("path/to/commands.puppet");
 
 ## 🔫 Commands
 
-| Command example      | Description              |
-| -------------------- | ------------------------ |
-| `Go to example.com`  | Navigate to a URL        |
-| `Wait for 5 seconds` | Wait for a specific time |
+| Command example            | Description                  |
+| -------------------------- | ---------------------------- |
+| `Go to example.com`        | Navigate to a URL            |
+| `Wait for 5 seconds`       | Wait for a specific time     |
+| `Click on learn more link` | Perform event on DOM element |
+| `Wait for navigation`      | Wait for next page to load   |
 
 ## 👩‍💻 Development
 
@@ -65,6 +86,12 @@ Run unit tests and view coverage:
 ```bash
 npm run test-without-reporting
 ```
+
+## Related work
+
+- [Puppeteer](https://github.com/puppeteer/puppeteer) is the headless Chrome API for Node.js
+- [Archiver](https://github.com/AnandChowdhary/archiver) is the Internet Archive saver I made using Puppeteer
+- [TagUI](https://github.com/kelaberetiv/TagUI) is a CLI for digital process automation (RPA)
 
 ## ✨ Contributors
 
@@ -82,6 +109,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
