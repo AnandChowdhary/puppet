@@ -1,5 +1,5 @@
 import { launch, Page } from "puppeteer";
-import { start, success } from "signale";
+import { start, success, pending } from "signale";
 import got from "got";
 import { readFile } from "fs-extra";
 import { join } from "path";
@@ -51,44 +51,66 @@ _puppet(["open example.com"]).then((r) => console.log(r));
 
 const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 const lastWord = (text: string) => text.split(" ")[text.split(" ").length - 1];
+const waitForNavigationOrTimeout = (
+  page: Page,
+  timeout: number
+): Promise<void> =>
+  new Promise((resolve) => {
+    page
+      .waitForNavigation()
+      .then(() => resolve())
+      .catch(() => resolve());
+    setTimeout(() => resolve(), timeout);
+  });
 
 const _command = async (command: string, page: Page): Promise<any> => {
-  if (command === "wait for navigation") return await page.waitForNavigation();
+  pending("Running command", command);
+  if (command === "wait for navigation")
+    return waitForNavigationOrTimeout(page, 10000);
   if (command.startsWith("wait"))
-    return await wait(ms(command.replace(/wait|for/gi, "").trim()));
-  if (command.startsWith("navigate") || command.startsWith("go")) {
-    const query = command.replace(/navigate|go|to|page|url/gi, "").trim();
+    return wait(ms(command.replace(/wait|for/gi, "").trim()));
+  if (
+    command.startsWith("navigate") ||
+    command.startsWith("go") ||
+    command.startsWith("open")
+  ) {
+    const query = command.replace(/navigate|go|open|to|page|url/gi, "").trim();
     const url = query.startsWith("http") ? query : `http://${query}`;
-    return await page.goto(url);
+    return page.goto(url);
   }
-  if (command.startsWith("click")) {
-    const query = command.replace(/click|on/gi, "").trim();
-    let selector = "*";
-    const type = lastWord(query);
-    if (type === "link") selector = "a";
-    if (type === "button") selector = "button";
-    if (type === "input") selector = "input";
-    if (type === "area") selector = "area";
-    if (type === "label") selector = "label";
-    if (type === "textarea") selector = "textarea";
-    if (type === "image") selector = "img";
-    const text = query
-      .replace(/link|button|input|area|label|textarea|image/gi, "")
-      .trim();
-    let elementToClick: HTMLElement | undefined = undefined;
-    await page.$$eval(selector, (elements) => {
-      elements.forEach((element) => {
-        if (
-          (element as HTMLElement).innerText.toLocaleLowerCase().includes(text)
-        )
-          elementToClick = element as HTMLElement;
-      });
-    });
-    if (elementToClick) {
-      // (elementToClick as HTMLElement).click();
-      success("Clicked on ", (elementToClick as HTMLElement).innerText);
-    }
-    return;
-  }
+  if (command.includes("screenshot")) return;
+  if (command.includes("save")) return;
+  // for await (const event of ["click"]) {
+  //   if (command.startsWith(event)) {
+  //     pending("Got event", event);
+  //   const query = command.replace(/click|on/gi, "").trim();
+  //   let selector = "*";
+  //   const type = lastWord(query);
+  //   if (type === "link") selector = "a";
+  //   if (type === "button") selector = "button";
+  //   if (type === "input") selector = "input";
+  //   if (type === "area") selector = "area";
+  //   if (type === "label") selector = "label";
+  //   if (type === "textarea") selector = "textarea";
+  //   if (type === "image") selector = "img";
+  //   const text = query
+  //     .replace(/link|button|input|area|label|textarea|image/gi, "")
+  //     .trim();
+  //   let elementToClick: HTMLElement | undefined = undefined;
+  //   await page.$$eval(selector, (elements) => {
+  //     elements.forEach((element) => {
+  //       if (
+  //         (element as HTMLElement).innerText.toLocaleLowerCase().includes(text)
+  //       )
+  //         elementToClick = element as HTMLElement;
+  //     });
+  //   });
+  //   if (elementToClick) {
+  //     // (elementToClick as HTMLElement).click();
+  //   }
+  //   return;
+  //   }
+  //   return;
+  // }
   throw new Error(`Command not understood: ${command}`);
 };

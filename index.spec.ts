@@ -1,4 +1,5 @@
 import { puppet } from "./index";
+jest.setTimeout(30000);
 
 describe("puppet basic run", () => {
   it("downloads and runs URL", async () => {
@@ -43,6 +44,11 @@ describe("cleans commands", () => {
 });
 
 describe("puppet commands", () => {
+  it("throws if invalid commands", async () => {
+    expect(puppet(["Unknown command"])).rejects.toEqual(
+      new Error("Command not understood: unknown command")
+    );
+  });
   it("waits for a specific time", async () => {
     const time = new Date().getTime();
     await puppet(["wait for 1 second"]);
@@ -57,11 +63,15 @@ describe("puppet commands", () => {
     expect(result.url).toBe("https://example.com/");
   });
   it("wait for navigation", async () => {
-    const result = await puppet([
-      "go to https://example.com",
-      "click on more information link",
-      "wait for navigation",
-    ]);
-    expect(result.url).toBe("https://www.iana.org/domains/reserved");
+    const result = await puppet(["go to example.com", "wait for navigation"]);
+    expect(result.url).toBe("http://example.com/");
   });
+  // it("wait for navigation", async () => {
+  //   const result = await puppet([
+  //     "go to https://example.com",
+  //     "click on more information link",
+  //     "wait for navigation",
+  //   ]);
+  //   expect(result.url).toBe("https://www.iana.org/domains/reserved");
+  // });
 });
