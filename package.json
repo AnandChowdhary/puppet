@@ -38,6 +38,7 @@
   },
   "homepage": "https://anandchowdhary.github.io/puppet/",
   "dependencies": {
+    "got": "^10.7.0",
     "puppeteer": "^2.1.1",
     "signale": "^1.4.0"
   },
