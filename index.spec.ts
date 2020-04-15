@@ -36,4 +36,12 @@ describe("cleans commands", () => {
     const result = await puppet(["go to example.com", "take a screenshot", ""]);
     expect(result.commands).toEqual(["go to example.com", "take a screenshot"]);
   });
+  it("lowercases commands", async () => {
+    const result = await puppet(["Go to www.example.com"]);
+    expect(result.commands).toEqual(["go to www.example.com"]);
+  });
+});
+
+describe("puppet commands", () => {
+  //
 });

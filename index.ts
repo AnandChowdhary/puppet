@@ -3,6 +3,7 @@ import { log } from "signale";
 import got from "got";
 import { readFile } from "fs-extra";
 import { join } from "path";
+import ms from "ms";
 
 /**
  *
@@ -33,7 +34,7 @@ export const puppet = async (commandsOrFile: string[] | string) => {
  * @param commands - Commands to run
  */
 const _puppet = async (commands: string[]) => {
-  commands = commands.map((i) => i.trim()).filter((i) => i);
+  commands = commands.map((i) => i.toLocaleLowerCase().trim()).filter((i) => i);
   log("Starting Puppet");
   const browser = await launch();
   const page = await browser.newPage();
@@ -46,6 +47,9 @@ const _puppet = async (commands: string[]) => {
 };
 _puppet(["open example.com"]).then((r) => console.log(r));
 
+const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
 const _command = async (command: string, page: Page) => {
+  if (command.startsWith("wait")) await wait(commmand);
   return page;
 };
