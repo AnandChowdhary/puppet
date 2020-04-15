@@ -4,7 +4,6 @@ import got from "got";
 import { readFile } from "fs-extra";
 import { join } from "path";
 import ms from "ms";
-import natural from "natural";
 // import finder from "@medv/finder";
 
 /**
@@ -51,6 +50,13 @@ const _puppet = async (commands: string[]) => {
 
 const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 const lastWord = (text: string) => text.split(" ")[text.split(" ").length - 1];
+const removeWords = (text: string, ...words: string[]) =>
+  text
+    .split(" ")
+    .filter((i) => !words.includes(i.trim()))
+    .join(" ")
+    .replace(/\s\s+/g, " ")
+    .trim();
 const waitForNavigationOrTimeout = (
   page: Page,
   timeout: number
@@ -68,52 +74,59 @@ const _command = async (command: string, page: Page): Promise<any> => {
   if (command === "wait for navigation")
     return waitForNavigationOrTimeout(page, 10000);
   if (command.startsWith("wait"))
-    return wait(ms(command.replace(/wait|for/gi, "").trim()));
+    return wait(ms(removeWords(command, "wait", "for")));
   if (
     command.startsWith("navigate") ||
     command.startsWith("go") ||
     command.startsWith("open")
   ) {
-    const query = command.replace(/navigate|go|open|to|page|url/gi, "").trim();
+    const query = removeWords(
+      command,
+      "navigate",
+      "go",
+      "open",
+      "to",
+      "page",
+      "url"
+    );
     const url = query.startsWith("http") ? query : `http://${query}`;
     return page.goto(url);
   }
   if (command.includes("screenshot")) return;
   if (command.includes("save")) return;
-  // for await (const event of ["click"]) {
-  //   if (command.startsWith(event)) {
-  //     const query = command.replace(/click| on /gi, "").trim();
-  //     let selector = "*";
-  //     const type = lastWord(query);
-  //     if (type === "link") selector = "a";
-  //     if (type === "button") selector = "button";
-  //     if (type === "input") selector = "input";
-  //     if (type === "area") selector = "area";
-  //     if (type === "label") selector = "label";
-  //     if (type === "textarea") selector = "textarea";
-  //     if (type === "image") selector = "img";
-  //     const text = query
-  //       .replace(/link|button|input|area|label|textarea|image/gi, "")
-  //       .trim();
-  //     console.log("GOT ELEMENT 1", text);
-  //     let elementToClick: HTMLElement | undefined = undefined;
-  // await page.$$eval(selector, (elements) => {
-  //   elements.forEach((element) => {
-  //     if (
-  //       (element as HTMLElement).innerText
-  //         .toLocaleLowerCase()
-  //         .includes(text)
-  //     )
-  //       elementToClick = element as HTMLElement;
-  //   });
-  // });
-  // if (elementToClick) {
-  // console.log("GOT ELEMENT", elementToClick);
-  // (elementToClick as HTMLElement).click();
-  // }
-  // return;
-  // }
-  // throw new Error(`Element not found: ${text}`);
-  // }
+  for await (const event of ["click"]) {
+    if (command.startsWith(event)) {
+      //     const query = command.replace(/click| on /gi, "").trim();
+      //     let selector = "*";
+      //     const type = lastWord(query);
+      //     if (type === "link") selector = "a";
+      //     if (type === "button") selector = "button";
+      //     if (type === "input") selector = "input";
+      //     if (type === "area") selector = "area";
+      //     if (type === "label") selector = "label";
+      //     if (type === "textarea") selector = "textarea";
+      //     if (type === "image") selector = "img";
+      //     const text = query
+      //       .replace(/link|button|input|area|label|textarea|image/gi, "")
+      //       .trim();
+      //     console.log("GOT ELEMENT 1", text);
+      //     let elementToClick: HTMLElement | undefined = undefined;
+      // await page.$$eval(selector, (elements) => {
+      //   elements.forEach((element) => {
+      //     if (
+      //       (element as HTMLElement).innerText
+      //         .toLocaleLowerCase()
+      //         .includes(text)
+      //     )
+      //       elementToClick = element as HTMLElement;
+      //   });
+      // });
+      // if (elementToClick) {
+      // console.log("GOT ELEMENT", elementToClick);
+      // (elementToClick as HTMLElement).click();
+      // }
+      // return;
+    }
+  }
   throw new Error(`Command not understood: ${command}`);
 };
