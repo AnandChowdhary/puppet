@@ -43,5 +43,9 @@ describe("cleans commands", () => {
 });
 
 describe("puppet commands", () => {
-  //
+  it("waits for a specific time", async () => {
+    const time = new Date().getTime();
+    await puppet(["wait for 1 second"]);
+    expect(new Date().getTime() - time).toBeGreaterThan(1000);
+  });
 });

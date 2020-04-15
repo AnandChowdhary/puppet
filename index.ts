@@ -50,6 +50,7 @@ _puppet(["open example.com"]).then((r) => console.log(r));
 const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const _command = async (command: string, page: Page) => {
-  if (command.startsWith("wait")) await wait(commmand);
+  if (command.startsWith("wait"))
+    await wait(ms(command.replace(/wait|for/gi, "").trim()));
   return page;
 };
