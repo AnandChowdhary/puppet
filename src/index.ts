@@ -6,6 +6,7 @@ import { join } from "path";
 import { navigateTo } from "./commands/navigation";
 import { screenshot, saveAsPdf, saveAsHtml } from "./commands/save-page-as";
 import { saveToFile } from "./commands/files";
+import { waitForTime } from "./commands/timers";
 
 /**
  *
@@ -73,12 +74,15 @@ const _command = async (command: string, page: Page, lastResult: any) => {
   if (command.includes("screenshot"))
     return screenshot(command, page, lastResult);
 
+  if (command.startsWith("wait for"))
+    return waitForTime(command, page, lastResult);
+
   throw new Error(`Command not understood: ${command}`);
 };
 
 puppet([
   "go to example.com",
-  "get page HTML",
+  "wait for 3 seconds",
   "save to screenshot.html",
   // "click on more information link",
   // "wait for navigation",
