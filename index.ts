@@ -1,7 +1,7 @@
 import { launch, Page } from "puppeteer";
 import { start, success, pending } from "signale";
 import got from "got";
-import { readFile } from "fs-extra";
+import { readFile, writeFile } from "fs-extra";
 import { join } from "path";
 import ms from "ms";
 // import finder from "@medv/finder";
@@ -39,8 +39,9 @@ const _puppet = async (commands: string[]) => {
   start("Starting Puppet");
   const browser = await launch();
   const page = await browser.newPage();
+  let lastResult: any = undefined;
   for await (const command of commands) {
-    await _command(command, page);
+    lastResult = await _command(command, page, lastResult);
   }
   const result = { commands, url: page.url() };
   await browser.close();
@@ -48,7 +49,8 @@ const _puppet = async (commands: string[]) => {
   return result;
 };
 
-const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+const wait = (ms: number): Promise<void> =>
+  new Promise((resolve) => setTimeout(resolve, ms));
 const lastWord = (text: string) => text.split(" ")[text.split(" ").length - 1];
 const removeWords = (text: string, ...words: string[]) =>
   text
@@ -69,8 +71,14 @@ const waitForNavigationOrTimeout = (
     setTimeout(() => resolve(), timeout);
   });
 
-const _command = async (command: string, page: Page): Promise<any> => {
+const _command = async (command: string, page: Page, lastResult: any) => {
   pending("Running command", command);
+  if (command.includes("screenshot")) return page.screenshot();
+  if (command.startsWith("save")) {
+    console.log("has save");
+    // console.log(join(".", lastWord(command)), lastResult);
+    // return writeFile(join(".", lastWord(command)), lastResult);
+  }
   if (command === "wait for navigation")
     return waitForNavigationOrTimeout(page, 7500);
   if (command.startsWith("wait"))
@@ -92,8 +100,6 @@ const _command = async (command: string, page: Page): Promise<any> => {
     const url = query.startsWith("http") ? query : `http://${query}`;
     return page.goto(url);
   }
-  if (command.includes("screenshot")) return;
-  if (command.includes("save")) return;
   for await (const event of ["click"]) {
     if (command.startsWith(event)) {
       const query = removeWords(command, "click");
@@ -143,6 +149,8 @@ const _command = async (command: string, page: Page): Promise<any> => {
 
 puppet([
   "go to https://example.com",
-  "click on more information link",
-  "wait for navigation",
+  "take a screenshot",
+  "save to screenshot.png",
+  // "click on more information link",
+  // "wait for navigation",
 ]);
