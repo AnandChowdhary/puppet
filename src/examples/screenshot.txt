@@ -1,3 +1,0 @@
-go to example.com
-take a screenshot
-save to example.png

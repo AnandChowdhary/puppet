@@ -7,15 +7,11 @@ describe("puppet basic run", () => {
     expect(result).toBeTruthy();
   });
   it("runs array of commands", async () => {
-    const result = await puppet([
-      "go to example.com",
-      "take a screenshot",
-      "save to example.png",
-    ]);
+    const result = await puppet(["go to example.com", "go to example.org"]);
     expect(result).toBeTruthy();
   });
   it("runs a file path", async () => {
-    const result = await puppet("examples/screenshot.txt");
+    const result = await puppet("src/examples/go-to.txt");
     expect(result).toBeTruthy();
   });
   it("throws if no commands", async () => {
@@ -29,13 +25,13 @@ describe("cleans commands", () => {
   it("trims commands", async () => {
     const result = await puppet([
       "go to example.com   ",
-      "   take a screenshot",
+      "   go to example.org",
     ]);
-    expect(result.commands).toEqual(["go to example.com", "take a screenshot"]);
+    expect(result.commands).toEqual(["go to example.com", "go to example.org"]);
   });
   it("removes empty commands", async () => {
-    const result = await puppet(["go to example.com", "take a screenshot", ""]);
-    expect(result.commands).toEqual(["go to example.com", "take a screenshot"]);
+    const result = await puppet(["go to example.com", "go to example.org", ""]);
+    expect(result.commands).toEqual(["go to example.com", "go to example.org"]);
   });
   it("lowercases commands", async () => {
     const result = await puppet(["Go to www.example.com"]);
