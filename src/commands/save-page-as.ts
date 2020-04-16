@@ -1,5 +1,5 @@
 import { Page } from "puppeteer";
-import { success, pending } from "signale";
+import { complete, pending } from "signale";
 
 export const screenshot = async (
   command: string,
@@ -8,6 +8,6 @@ export const screenshot = async (
 ) => {
   pending("Taking a screenshot...");
   const shot = await page.screenshot();
-  success("Took a screenshot");
+  complete("Took a screenshot");
   return shot;
 };

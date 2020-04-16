@@ -1,10 +1,11 @@
 import { launch, Page } from "puppeteer";
-import { start, success, pending } from "signale";
+import { start, success, debug } from "signale";
 import got from "got";
-import { readFile, writeFile } from "fs-extra";
+import { readFile } from "fs-extra";
 import { join } from "path";
-import ms from "ms";
-// import finder from "@medv/finder";
+import { navigateTo } from "./commands/navigation";
+import { screenshot } from "./commands/save-page-as";
+import { saveToFile } from "./commands/files";
 
 /**
  *
@@ -50,12 +51,21 @@ const _puppet = async (commands: string[]) => {
 };
 
 const _command = async (command: string, page: Page, lastResult: any) => {
-  pending("Running command", command);
+  debug("Running command", command);
+
+  if (command.startsWith("go") || command.startsWith("navigation"))
+    return navigateTo(command, page, lastResult);
+
+  if (command.startsWith("save")) return saveToFile(command, page, lastResult);
+
+  if (command.includes("screenshot"))
+    return screenshot(command, page, lastResult);
+
   throw new Error(`Command not understood: ${command}`);
 };
 
 puppet([
-  "go to https://example.com",
+  "go to example.com",
   "take a screenshot",
   "save to screenshot.png",
   // "click on more information link",

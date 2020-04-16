@@ -1,5 +1,5 @@
 import { Page } from "puppeteer";
-import { pending } from "signale";
+import { complete, pending } from "signale";
 import { removeWords } from "../helpers";
 
 export const navigateTo = async (
@@ -18,5 +18,7 @@ export const navigateTo = async (
   );
   const url = query.startsWith("http") ? query : `http://${query}`;
   pending(`Navigating to ${url}`);
-  return page.goto(url);
+  const result = await page.goto(url);
+  complete(`Navigated to ${url}`);
+  return result;
 };
