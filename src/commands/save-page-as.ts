@@ -11,10 +11,11 @@ export const screenshot = async (
     fullPage: command.includes("full"),
     type: command.includes("jpg") || command.includes("jpeg") ? "jpeg" : "png",
     omitBackground:
-      command.includes("background") &&
-      (command.includes("remove") ||
-        command.includes("without") ||
-        command.includes("omit")),
+      command.includes("transparent") ||
+      (command.includes("background") &&
+        (command.includes("remove") ||
+          command.includes("without") ||
+          command.includes("omit"))),
   });
   complete("Took a screenshot");
   return shot;

@@ -54,7 +54,11 @@ const _puppet = async (commands: string[]) => {
 const _command = async (command: string, page: Page, lastResult: any) => {
   debug("Running command", command);
 
-  if (command.startsWith("go") || command.startsWith("navigation"))
+  if (
+    command.startsWith("go") ||
+    command.startsWith("open") ||
+    command.startsWith("navigate")
+  )
     return navigateTo(command, page, lastResult);
 
   if (
