@@ -10,7 +10,7 @@
   ],
   "scripts": {
     "build": "tsc",
-    "test": "jest --runInBand",
+    "test": "jest --runInBand --forceExit",
     "test-report": "jest --forceExit --runInBand --coverage --coverageReporters=text-lcov | coveralls",
     "test-without-reporting": "jest --forceExit --runInBand --coverage",
     "semantic-release": "semantic-release"
