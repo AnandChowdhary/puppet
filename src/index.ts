@@ -80,10 +80,10 @@ const _command = async (command: string, page: Page, lastResult: any) => {
   throw new Error(`Command not understood: ${command}`);
 };
 
-puppet([
-  "go to example.com",
-  "wait for 3 seconds",
-  "save to screenshot.html",
-  // "click on more information link",
-  // "wait for navigation",
-]);
+// puppet([
+//   "go to example.com",
+//   "wait for 3 seconds",
+//   "save to screenshot.html",
+// "click on more information link",
+// "wait for navigation",
+// ]);

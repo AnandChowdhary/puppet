@@ -3,7 +3,7 @@ jest.setTimeout(30000);
 
 describe("puppet basic run", () => {
   it("downloads and runs URL", async () => {
-    const result = await puppet("https://pastebin.com/raw/bqRmm1z9");
+    const result = await puppet("https://pastebin.com/raw/AeY1MAwF");
     expect(result).toBeTruthy();
   });
   it("runs array of commands", async () => {

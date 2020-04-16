@@ -10,7 +10,7 @@ export const saveToFile = async (
   lastResult: any
 ) => {
   const path = join(".", lastWord(command));
-  pending(`Saving ${Buffer.from(lastResult).byteLength}b file`);
+  pending(`Saving ${Buffer.from(lastResult || "").byteLength}b file`);
   await writeFile(path, lastResult);
   complete(`Saved to file ${path}...`);
 };
