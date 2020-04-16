@@ -8,7 +8,7 @@ Natural-language web automation using [Puppeteer](https://github.com/puppeteer/p
 [![Dependencies](https://img.shields.io/librariesio/release/npm/puppet)](https://libraries.io/npm/puppet)
 [![License](https://img.shields.io/npm/l/puppet)](https://github.com/AnandChowdhary/puppet/blob/master/LICENSE)
 [![Vulnerabilities](https://img.shields.io/snyk/vulnerabilities/npm/puppet.svg)](https://snyk.io/test/npm/puppet)
-[![Based on Node.ts](https://img.shields.io/badge/based%20on-node.ts-brightgreen)](https://github.com/AnandChowdhary/puppet)
+[![Based on Node.ts](https://img.shields.io/badge/based%20on-node.ts-brightgreen)](https://github.com/AnandChowdhary/node.ts)
 [![npm type definitions](https://img.shields.io/npm/types/puppet.svg)](https://unpkg.com/browse/puppet/dist/index.d.ts)
 [![npm package](https://img.shields.io/npm/v/puppet.svg)](https://www.npmjs.com/package/puppet)
 [![npm downloads](https://img.shields.io/npm/dw/puppet)](https://www.npmjs.com/package/puppet)
@@ -66,12 +66,14 @@ const { url } = await puppet("path/to/commands.puppet");
 
 ## 🔫 Commands
 
-| Command example            | Description                  |
-| -------------------------- | ---------------------------- |
-| `Go to example.com`        | Navigate to a URL            |
-| `Wait for 5 seconds`       | Wait for a specific time     |
-| `Click on learn more link` | Perform event on DOM element |
-| `Wait for navigation`      | Wait for next page to load   |
+| Command example         | Description                    |
+| ----------------------- | ------------------------------ |
+| `Go to example.com`     | Navigate to a URL              |
+| `Wait for 5 seconds`    | Wait for a specific time       |
+| `Take a JPG screenshot` | Take a screenshot              |
+| `Save page as HTML`     | Download HTML source           |
+| `Save page as PDF`      | Generate PDF from page         |
+| `Save to example.png`   | Save previous result to a file |
 
 ## 👩‍💻 Development
 
