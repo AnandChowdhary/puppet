@@ -83,10 +83,11 @@ const _command = async (command: string, page: Page, lastResult: any) => {
     return waitForTime(command, page, lastResult);
 
   if (
-    (command.startsWith("click") || command.startsWith("move")) &&
-    (command.includes("point") ||
-      command.includes("coordinate") ||
-      command.includes("mouse"))
+    command.startsWith("move") ||
+    (command.startsWith("click") &&
+      (command.includes("point") ||
+        command.includes("coordinate") ||
+        command.includes("mouse")))
   )
     return triggerMouseClickMove(command, page, lastResult);
 
