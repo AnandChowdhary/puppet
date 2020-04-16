@@ -81,14 +81,46 @@ await puppet(["open example.com", "get page HTML", "save as page.html"]);
 
 ## 🔫 Commands
 
-| Command example         | Description                    |
-| ----------------------- | ------------------------------ |
-| `Go to example.com`     | Navigate to a URL              |
-| `Wait for 5 seconds`    | Wait for a specific time       |
-| `Take a JPG screenshot` | Take a screenshot              |
-| `Save page as HTML`     | Download HTML source           |
-| `Save page as PDF`      | Generate PDF from page         |
-| `Save to example.png`   | Save previous result to a file |
+### Navigation
+
+- `Go to example.com`
+- `Navigate to URL https://example.com`
+- `Go to the page on example.com`
+- `Open www.example.com`
+
+### Timers
+
+- `Wait for 10 seconds`
+- `Wait for 2 minutes`
+- `Wait for 100ms`
+
+### Screenshot
+
+- `Take a screenshot of this page`
+- `Take a JPEG screenshot`
+- `Full screenshot this page`
+- `Make a transparent screenshot`
+- `Screenshot and omit the background`
+
+### Export page to PDF/HTML
+
+- `Save this page as PDF`
+- `Save page HTML`
+- `Get the HTML`
+- `Save the whole page as PDF`
+
+### Save to file
+
+- `Save result to path/to/file`
+- `Save this screenshot to path/to/file`
+- `Save this to the file path/to/file`
+
+### Mouse events
+
+- `Click on point [123, 456]`
+- `Right click on coordinates 123, 456`
+- `Move mouse cursor to points 123, 456`
+- `Click on 123, 456 using middle mouse button`
 
 ## 👩‍💻 Development
 

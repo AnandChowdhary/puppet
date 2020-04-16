@@ -7,6 +7,7 @@ import { navigateTo } from "./commands/navigation";
 import { screenshot, saveAsPdf, saveAsHtml } from "./commands/save-page-as";
 import { saveToFile } from "./commands/files";
 import { waitForTime } from "./commands/timers";
+import { triggerMouseClickMove } from "./commands/mouse";
 
 /**
  *
@@ -80,6 +81,14 @@ const _command = async (command: string, page: Page, lastResult: any) => {
 
   if (command.startsWith("wait for"))
     return waitForTime(command, page, lastResult);
+
+  if (
+    (command.startsWith("click") || command.startsWith("move")) &&
+    (command.includes("point") ||
+      command.includes("coordinate") ||
+      command.includes("mouse"))
+  )
+    return triggerMouseClickMove(command, page, lastResult);
 
   throw new Error(`Command not understood: ${command}`);
 };
