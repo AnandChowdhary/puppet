@@ -4,7 +4,7 @@ import got from "got";
 import { readFile } from "fs-extra";
 import { join } from "path";
 import { navigateTo } from "./commands/navigation";
-import { screenshot } from "./commands/save-page-as";
+import { screenshot, saveAsPdf, saveAsHtml } from "./commands/save-page-as";
 import { saveToFile } from "./commands/files";
 
 /**
@@ -56,6 +56,18 @@ const _command = async (command: string, page: Page, lastResult: any) => {
   if (command.startsWith("go") || command.startsWith("navigation"))
     return navigateTo(command, page, lastResult);
 
+  if (
+    (command.startsWith("save") || command.startsWith("get")) &&
+    command.endsWith(" pdf")
+  )
+    return saveAsPdf(command, page, lastResult);
+
+  if (
+    (command.startsWith("save") || command.startsWith("get")) &&
+    command.endsWith(" html")
+  )
+    return saveAsHtml(command, page, lastResult);
+
   if (command.startsWith("save")) return saveToFile(command, page, lastResult);
 
   if (command.includes("screenshot"))
@@ -66,8 +78,8 @@ const _command = async (command: string, page: Page, lastResult: any) => {
 
 puppet([
   "go to example.com",
-  "take a screenshot",
-  "save to screenshot.png",
+  "get page HTML",
+  "save to screenshot.html",
   // "click on more information link",
   // "wait for navigation",
 ]);

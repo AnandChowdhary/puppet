@@ -18,7 +18,7 @@ export const navigateTo = async (
   );
   const url = query.startsWith("http") ? query : `http://${query}`;
   pending(`Navigating to ${url}`);
-  const result = await page.goto(url);
+  const result = await page.goto(url, { waitUntil: "load" });
   complete(`Navigated to ${url}`);
   return result;
 };
