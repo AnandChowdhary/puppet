@@ -42,18 +42,26 @@ puppet "path/to/download.puppet"
 
 ## 💡 Usage
 
-Install the package from [npm](https://www.npmjs.com/package/puppet):
+### CLI
+
+Install the package globally from [npm](https://www.npmjs.com/package/puppet):
 
 ```bash
-npm install puppet
+npm install --global puppet
 ```
 
-Install and use the CLI:
-
 ```bash
-npm install --save-global puppet
+# Local Puppet file
 puppet "path/to/commands.puppet"
+
+# Remote Puppet file
+puppet https://pastebin.com/raw/AeY1MAwF
+
+# Commands directly in CLI
+puppet "open example.com" "get page HTML" "save as page.html"
 ```
+
+### API
 
 Import and use the API:
 
@@ -61,7 +69,14 @@ Import and use the API:
 const { puppet } = require("puppet"); // Node.js
 import { puppet } from "puppet"; // TypeScript/ES6
 
-const { url } = await puppet("path/to/commands.puppet");
+// Local Puppet file
+await puppet("path/to/commands.puppet");
+
+// Remote Puppet file
+await puppet("https://pastebin.com/raw/AeY1MAwF");
+
+// Commands directly as an array of strings
+await puppet(["open example.com", "get page HTML", "save as page.html"]);
 ```
 
 ## 🔫 Commands
