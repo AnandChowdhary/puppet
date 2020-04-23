@@ -14,7 +14,8 @@ header {
   background-color: #ffe600;
   padding: 5vh 0 10vh 0;
   nav {
-    text-align: center;
+    display: flex;
+    // justify-content: center;
     margin-bottom: 10vh;
   }
   nav a {
@@ -23,6 +24,13 @@ header {
     text-decoration: none;
     text-transform: uppercase;
     letter-spacing: 0.25rem;
+    display: flex;
+    align-items: center;
+    img {
+      display: block;
+      margin: 0 0.5rem 0 0;
+      height: 5rem;
+    }
   }
   p {
     max-width: 500px;
