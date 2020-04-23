@@ -27,4 +27,4 @@ jobs:
         name: GitHub Pages Deploy
         env:
           BUILD_DIR: "dist/"
-          GH_PAT: ${{ secrets.GITHUB_TOKEN }}
+          GH_PAT: ${{ secrets.GH_PAT }}
