@@ -1,9 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
       Puppet &middot; Open source no-code, natural language web automation
     </title>
+    <link rel="icon" href="assets/icon.svg" />
     <link rel="stylesheet" href="app.scss" />
     <link
       href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&display=swap"
@@ -30,6 +33,15 @@
             <a href="#" class="button">Get for $4/month &rarr;</a>
           </div>
         </div>
+      </div>
+      <div class="recipes">
+        <div>Save a webpage on the Internet Archive</div>
+        <div>Send yourself daily weather on Slack</div>
+        <div>Download stories from an Instagram user</div>
+        <div>Monitor website uptime and email if down</div>
+        <div>Audit website performance with Lighthouse</div>
+        <div>Follow hashtag users on Twitter (with Secrets)</div>
+        <div>Take screenshots of different viewports</div>
       </div>
     </header>
     <main>
@@ -59,13 +71,15 @@
           </div>
           <div class="recommended">
             <div>
-              <h3>Basic</h3>
+              <h3>Puppet Starter</h3>
               <div>$4/month</div>
             </div>
             <ul>
               <li>Unlimited usage</li>
               <li>5 minute long jobs</li>
-              <li>Unlimited history</li>
+              <li>7-day job history</li>
+              <li>No Secrets <a href="#faq" class="q">?</a></li>
+              <li>No emails or SMS</li>
             </ul>
             <div>
               <a href="#" class="button">Get started &rarr;</a>
@@ -73,9 +87,16 @@
           </div>
           <div>
             <div>
-              <h3>Expert</h3>
+              <h3>Puppet Master</h3>
               <div>$9/month</div>
             </div>
+            <ul>
+              <li>Unlimited usage</li>
+              <li>Unlimited job duration</li>
+              <li>Unlimited job history</li>
+              <li>Unlimited Secrets <a href="#faq" class="q">?</a></li>
+              <li>Send emails and SMS</li>
+            </ul>
             <div>
               <a href="#" class="button">Get started &rarr;</a>
             </div>
@@ -85,14 +106,75 @@
       <section>
         <h2>Recipes</h2>
         <ul>
-          <li>Save your webpage on the Internet Archive</li>
-          <li>Send yourself the latest news on Slack</li>
-          <li>Download your stories from Instagram</li>
+          <li>Save a webpage on the Internet Archive</li>
+          <li>Send yourself daily weather on Slack</li>
+          <li>Download stories from an Instagram user</li>
+          <li>Monitor website uptime and email if down</li>
+          <li>Audit website performance with Lighthouse</li>
           <li>Follow hashtag users on Twitter (with Secrets)</li>
-          <li>Take a screenshot of a webpage</li>
+          <li>Take screenshots of different viewports</li>
         </ul>
       </section>
+      <section id="faq">
+        <div class="container">
+          <h2>Frequently Asked Questions</h2>
+          <details>
+            <summary>What are Secrets?</summary>
+            Secrets is a form of encrypted text storage that allow you to store
+            sensitive information. For example, you can store Secrets for your
+            username and password to use Puppet when logging in to web services.
+          </details>
+          <details>
+            <summary>Do you offer discounts to students and teachers?</summary>
+            If you have an educational email address, you receive the Puppet
+            Master plan for free. Just sign up with your school/university email
+            and it will be activated. If you have an unrecognized institution
+            domain, contact us with your ID and we'll set you up.
+          </details>
+          <details>
+            <summary>Do you offer discounts to nonprofits?</summary>
+            If you're representing a registered nonprofit in your jurisdiction
+            (like 501/c in the US), let us know and we'll give you the Puppet
+            Master plan for free.
+          </details>
+          <details>
+            <summary>How unlimited is unlimited, really?</summary>
+            <ol>
+              <li>
+                Unlimited fair usage: As long as you don't crash our servers,
+                you can use as many jobs as you like. We have a rate limit of
+                100 requests per minute. We'll let you know if we're not
+                comfortable with your usage, but this has never happened before.
+              </li>
+              <li>
+                In the Puppet Master plan, we don't cap the job duration, but
+                any running jobs will stop if we're running maintenance or
+                updating our APIs. You should be fine as long as you don't run a
+                job longer than tens of hours. This has also never happened
+                before.
+              </li>
+            </ol>
+          </details>
+          <details>
+            <summary>Can we request an SLA?</summary>
+            We're happy to provide 99.99% uptime SLAs to Puppet Master users for
+            an additional fee of $100/month. You can purchase this addon when
+            you sign up.
+          </details>
+          <details>
+            <summary
+              >Do you offer enterprise options or managed services?</summary
+            >
+            We're happy to offer a custom solution for your enterprise. This can
+            be a managed service or increased rate limits on our platform.
+            Contact us to discuss pricing.
+          </details>
+        </div>
+      </section>
     </main>
+    <footer>
+      <p>&copy; 2020</p>
+    </footer>
     <script src="app.ts"></script>
   </body>
 </html>
