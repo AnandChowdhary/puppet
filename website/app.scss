@@ -16,15 +16,23 @@ header {
   padding: 5vh 0 10vh 0;
   nav {
     display: flex;
-    // justify-content: center;
+    justify-content: space-between;
     margin-bottom: 10vh;
+  }
+  nav > a:first-child {
+    text-transform: uppercase;
+    letter-spacing: 0.33rem;
+  }
+  nav > div {
+    display: flex;
+    a + a {
+      margin-left: 2.5rem;
+    }
   }
   nav a {
     color: inherit;
     font-weight: bold;
     text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: 0.33rem;
     display: flex;
     align-items: center;
     img {
@@ -88,6 +96,13 @@ h2 {
     margin-top: 0.5rem;
     background-color: #ebd3f5;
     color: inherit;
+    + p {
+      margin: 0.5rem 0 0 0;
+      text-align: center;
+      max-width: 100%;
+      font-size: 80%;
+      opacity: 0.75;
+    }
   }
   .recommended .button {
     background: #66029c;
@@ -149,7 +164,7 @@ h2 {
   max-width: 550px;
 }
 header .doodle {
-  bottom: -7.5vh;
+  bottom: -10vh;
 }
 
 footer {
@@ -170,4 +185,32 @@ footer {
       margin-left: 2rem;
     }
   }
+}
+
+.message {
+  padding: 1.5vh 0;
+  background-color: #e2650d;
+  color: #fff;
+  h2 {
+    margin-bottom: 0.5rem;
+  }
+  p {
+    margin: 0;
+  }
+  .container {
+    display: flex;
+    align-items: center;
+    p {
+      margin-right: 2rem;
+      flex: 1 0 0;
+    }
+  }
+  a.button {
+    font-size: 100%;
+    padding: 0.5rem 1rem;
+  }
+}
+
+code {
+  font-family: "SFMono-Regular", Consolas, Liberation Mono, Menlo, monospace;
 }
