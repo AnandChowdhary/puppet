@@ -1,3 +1,99 @@
 body {
-  font-family: sans-serif;
+  font-family: "Manrope", sans-serif;
+  margin: 0;
+  line-height: 1.5;
+  font-size: 125%;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+header {
+  background-color: #ffe600;
+  padding: 5vh 0 10vh 0;
+  nav {
+    text-align: center;
+    margin-bottom: 10vh;
+  }
+  nav a {
+    color: inherit;
+    font-weight: bold;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.25rem;
+  }
+  p {
+    max-width: 500px;
+  }
+}
+header .container > div {
+  max-width: 600px;
+}
+
+h1 {
+  line-height: 1.2;
+  margin-top: 0;
+}
+
+.button {
+  background-color: #66029c;
+  color: #fff;
+  text-decoration: none;
+  padding: 1rem 1.5rem;
+  display: inline-block;
+  border-radius: 10rem;
+}
+
+#pricing {
+  background-color: whitesmoke;
+  padding: 2rem 0;
+  .container {
+    display: flex;
+  }
+  .container > div {
+    flex: 1 0 0;
+    background-color: #fff;
+    margin: 0 1rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    border-radius: 0.5rem;
+    text-align: center;
+    padding: 1.5rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+  h3 {
+    margin: 0;
+    + div {
+      font-size: 150%;
+      font-weight: bold;
+      color: #66029c;
+    }
+  }
+  .button {
+    padding: 0.5rem 1rem;
+    margin-top: 0.5rem;
+    font-size: 125%;
+    background-color: #ebd3f5;
+    color: inherit;
+  }
+  .recommended .button {
+    background: #66029c;
+    color: #fff;
+  }
+  ul {
+    margin: 2rem 0;
+    padding: 0;
+    list-style: none;
+  }
+  li {
+    margin: 1rem 0;
+  }
+  p {
+    font-size: 90%;
+    max-width: 80%;
+  }
 }

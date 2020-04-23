@@ -14,7 +14,8 @@
     "test-report": "jest --forceExit --runInBand --coverage --coverageReporters=text-lcov | coveralls",
     "test-without-reporting": "jest --forceExit --runInBand --coverage",
     "semantic-release": "semantic-release",
-    "build-website": "parcel build website/index.html"
+    "build-website": "parcel build website/index.html",
+    "start-website": "parcel website/index.html"
   },
   "repository": {
     "type": "git",
