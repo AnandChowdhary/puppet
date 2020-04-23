@@ -6,6 +6,7 @@ body {
 }
 
 .container {
+  position: relative;
   max-width: 1000px;
   margin: 0 auto;
 }
@@ -125,12 +126,48 @@ h2 {
 #faq {
   background-color: whitesmoke;
   padding: 2.5rem 0;
+  details + details {
+    margin-top: 1rem;
+  }
+  details {
+    max-width: 600px;
+  }
 }
 
-footer {
+.cta {
   background-color: #ffe600;
   padding: 5vh 0 10vh 0;
   .container > div {
     max-width: 500px;
+  }
+}
+
+.doodle {
+  position: absolute;
+  right: -10vw;
+  bottom: -5vh;
+  max-width: 550px;
+}
+header .doodle {
+  bottom: -7.5vh;
+}
+
+footer {
+  background-color: #000;
+  color: #fff;
+  font-size: 80%;
+  padding: 2.5vh 0;
+  .container {
+    display: flex;
+    justify-content: space-between;
+  }
+  a {
+    color: inherit;
+  }
+  nav {
+    display: flex;
+    a + a {
+      margin-left: 2rem;
+    }
   }
 }

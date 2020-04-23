@@ -6,7 +6,7 @@
     <title>
       Puppet &middot; Open source no-code, natural language web automation
     </title>
-    <link rel="icon" href="assets/icon.svg" />
+    <link rel="icon" href="/assets/icon.svg" />
     <link rel="stylesheet" href="app.scss" />
     <link
       href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&display=swap"
@@ -18,7 +18,7 @@
       <div class="container">
         <nav>
           <a href="/">
-            <img alt="" src="assets/icon.svg" />
+            <img alt="" src="/assets/icon.svg" />
             <span>Puppet</span>
           </a>
         </nav>
@@ -33,6 +33,7 @@
             <a href="#" class="button">Get for $4/month &rarr;</a>
           </div>
         </div>
+        <img alt="" src="/assets/sleek.svg" class="doodle" />
       </div>
     </header>
     <main>
@@ -111,9 +112,11 @@
           <h2>Frequently Asked Questions</h2>
           <details>
             <summary>What are Secrets?</summary>
-            Secrets is a form of encrypted text storage that allow you to store
-            sensitive information. For example, you can store Secrets for your
-            username and password to use Puppet when logging in to web services.
+            Secrets are a form of encrypted text storage that allow you to store
+            sensitive information. For example, you can use Secrets to store
+            your username and password to use Puppet when logging in to web
+            services. Secrets are encrypted with AES-256 using a unique key
+            specific to you.
           </details>
           <details>
             <summary>Do you offer discounts to students and teachers?</summary>
@@ -163,7 +166,7 @@
         </div>
       </section>
     </main>
-    <footer>
+    <div class="cta">
       <div class="container">
         <div>
           <h2>
@@ -174,6 +177,20 @@
             <a href="#" class="button">Get for $4/month &rarr;</a>
           </div>
         </div>
+        <img alt="" src="/assets/coffee.svg" class="doodle" />
+      </div>
+    </div>
+    <footer>
+      <div class="container">
+        <div>
+          Made by <a href="https://anandchowdhary.com">Anand Chowdhary</a>
+        </div>
+        <nav>
+          <a href="https://twitter.com/AnandChowdhary">Twitter</a>
+          <a href="https://github.com/AnandChowdhary/puppet">GitHub</a>
+          <a href="https://www.npmjs.com/package/puppet">NPM</a>
+          <a href="#">Terms and Privacy</a>
+        </nav>
       </div>
     </footer>
     <script src="app.ts"></script>
