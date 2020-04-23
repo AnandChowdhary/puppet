@@ -226,3 +226,26 @@ footer {
 code {
   font-family: "SFMono-Regular", Consolas, Liberation Mono, Menlo, monospace;
 }
+
+@media (max-width: 900px) {
+  header nav,
+  .message .container,
+  #pricing .container,
+  footer .container {
+    display: block;
+  }
+  #pricing .container > div:not(:first-child) {
+    margin-top: 1rem;
+  }
+  header nav > div {
+    margin-top: 1rem;
+  }
+  .doodle {
+    position: static;
+    margin-top: 5vh;
+    margin-bottom: -10vh;
+  }
+  .container {
+    max-width: 90%;
+  }
+}
