@@ -50,7 +50,8 @@ h2 {
   background-color: #66029c;
   color: #fff;
   text-decoration: none;
-  padding: 1rem 1.5rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 120%;
   display: inline-block;
   border-radius: 10rem;
 }
@@ -83,9 +84,7 @@ h2 {
     }
   }
   .button {
-    padding: 0.5rem 1rem;
     margin-top: 0.5rem;
-    font-size: 125%;
     background-color: #ebd3f5;
     color: inherit;
   }
@@ -126,4 +125,12 @@ h2 {
 #faq {
   background-color: whitesmoke;
   padding: 2.5rem 0;
+}
+
+footer {
+  background-color: #ffe600;
+  padding: 5vh 0 10vh 0;
+  .container > div {
+    max-width: 500px;
+  }
 }

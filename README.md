@@ -168,3 +168,4 @@ This project follows the [all-contributors](https://github.com/all-contributors/
 - Code: [MIT](./LICENSE) © [Anand Chowdhary](https://anandchowdhary.com)
 - Landing page copy: CC-BY 4.0 Puppet
 - Icon: CC-BY 3.0 [Jon Trillana](https://thenounproject.com/search/?q=puppet&i=44227)
+- Illustrations: CC-0 [Pablo Stanley](https://www.opendoodles.com)
