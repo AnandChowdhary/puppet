@@ -225,11 +225,35 @@ footer {
   }
 }
 
-#features .container {
-  display: flex;
-  padding: 5vh 0;
-  > div {
-    flex: 1 0 0;
+#features {
+  .container {
+    display: flex;
+    padding: 5vh 0;
+    > div {
+      flex: 1 0 0;
+    }
+  }
+  textarea {
+    height: 18rem;
+    line-height: 2rem;
+    font-size: 2rem;
+    padding: 1rem;
+    font: inherit;
+    width: 85%;
+    box-sizing: border-box;
+    border: 1px solid gray;
+    border-radius: 0.5rem;
+    resize: vertical;
+  }
+  .button {
+    font-size: 100%;
+    padding: 0.5rem 1rem;
+    margin-top: 0.5rem;
+    &:last-child {
+      background-color: #ebd3f5;
+      color: inherit;
+      margin-left: 0.5rem;
+    }
   }
   ul {
     margin: 0;
@@ -264,7 +288,8 @@ footer {
   header nav,
   .message .container,
   #pricing .container,
-  footer .container {
+  footer .container,
+  #features .container {
     display: block;
   }
   #pricing .container > div:not(:first-child) {
@@ -280,6 +305,17 @@ footer {
   }
   .container {
     max-width: 90%;
+  }
+  #features .container li span:first-child {
+    zoom: 0.75;
+  }
+  #features {
+    textarea {
+      width: 100%;
+    }
+    ul {
+      margin-top: 2rem;
+    }
   }
 }
 
