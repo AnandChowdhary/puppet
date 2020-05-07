@@ -6,7 +6,7 @@ import { join } from "path";
 import { navigateTo } from "./commands/navigation";
 import { screenshot, saveAsPdf, saveAsHtml } from "./commands/save-page-as";
 import { saveToFile } from "./commands/files";
-import { waitForTime } from "./commands/timers";
+import { waitForTime, waitForNavigation } from "./commands/timers";
 import { triggerMouseClickMove } from "./commands/mouse";
 
 /**
@@ -80,7 +80,10 @@ const _command = async (command: string, page: Page, lastResult: any) => {
     return screenshot(command, page, lastResult);
 
   if (command.startsWith("wait for"))
-    return waitForTime(command, page, lastResult);
+    if (command.includes("navigation"))
+      return waitForNavigation(command, page, lastResult);
+    else
+      return waitForTime(command, page, lastResult);
 
   if (
     command.startsWith("move") ||

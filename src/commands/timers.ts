@@ -12,3 +12,14 @@ export const waitForTime = async (
   await wait(ms(removeWords(command, "wait", "for")));
   complete("Waited");
 };
+
+export const waitForNavigation = async (
+  command: string,
+  page: Page,
+  lastResult: any
+) => {
+  pending("Waiting for navigation...");
+  const result = await page.waitForNavigation();
+  complete("Waited");
+  return result;
+};

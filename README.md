@@ -93,6 +93,7 @@ await puppet(["open example.com", "get page HTML", "save as page.html"]);
 - `Wait for 10 seconds`
 - `Wait for 2 minutes`
 - `Wait for 100ms`
+- `Wait for navigation`
 
 ### Screenshot
 
