@@ -42,7 +42,7 @@
   "dependencies": {
     "@medv/finder": "^1.1.2",
     "fs-extra": "^9.0.0",
-    "got": "^10.7.0",
+    "got": "^11.8.5",
     "ms": "^2.1.2",
     "natural": "^0.6.3",
     "puppeteer": "^2.1.1",
