@@ -12,7 +12,7 @@ describe("puppet - HTML", () => {
     await page.goto("http://example.com");
     const result = await saveAsHtml("save as HTML", page, "");
     await browser.close();
-    expect(result.length).toBeGreaterThan(1000);
+    expect(result).toContain("Example Domain");
   });
   it("download page HTML", async () => {
     await puppet(["go to example.com", "save as HTML", "save to basic.html"]);

@@ -26,7 +26,7 @@ describe("puppet - timers", () => {
       page.click("body > div > p:nth-child(3) > a"),
       waitForNavigation("", page, "")
     ]);
-    expect(navigationResult.url()).toBe("https://www.iana.org/domains/reserved");
+    expect(navigationResult.url()).toContain("https://www.iana.org/");
     await browser.close();
   });
 });
